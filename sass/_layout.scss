@@ -1,0 +1,86 @@
+.container {
+    max-width: 120rem; // by decreasing the font size for media query the width would be decreased automatically. so we change it at largest break point to 100% exactly down here. because when the width decreased the pink will be back at break point. this problem occurred at step 2
+    margin:8rem auto;
+    background-color: var(--color-grey-light-1);
+    box-shadow: var(--shadow-dark);
+    min-height: 60rem;
+
+    @media only screen and (max-width: $bp-largest)  {
+        margin: 0; // 1-step we remove the pink background at this break point 
+        max-width: 100%; // this is for fixing the problem occurred in step. this line and the following line
+        width: 100%;
+    }
+}
+.header {
+    font-size: 1.4rem;
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: 1px solid var(--color-grey-light-2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media only screen and (max-width: $bp-smallest) { 
+        flex-wrap: wrap; // 21-step  , by this property we put the item with the highest order to the next line when there is no enough space.
+        height: 11rem;// to create more space 
+        align-content: space-around;// in order to create some space among the elements in the flex which is here a column.          
+    }
+}
+.content{
+    display: flex;
+
+    @media only screen and (max-width: $bp-medium) {
+        flex-direction: column; // 3-step
+    }
+}
+.side-bar {
+    background-color: var(--color-grey-dark-1);
+    flex: 0 0 18%; //we set the grow and shrink to 0 and the width to 18%, we simply set the grow of the other element to 1 to occupy all the width that is available.
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.hotel-view {
+    background-color: #fff;
+    flex: 1;
+}
+.detail {
+    font-size: 1.4rem;
+    display: flex;
+    padding: 4.5rem;// the same size of the child margin right because create consistent space between elements inside the parent. description is the child
+    background-color: var(--color-grey-light-1);// set a beautiful and subtle background color
+    border-bottom: var(--line); // we have set a border properties and named it as line
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 3rem; // 9-step , decrease the white spaces to create more space for contents in small view ports
+    }
+
+    @media only screen and (max-width: $bp-small) { // keep in mind in desktop first approach put the smallest media query at the end. like here.
+        flex-direction: column; // 13-step , to put the description and review underneath each other. 
+    }
+}
+
+.description {
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    flex: 0 0 60%;// set the width to 60%
+    margin-right: 4.5rem;
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 2rem; // 10-step , decrease the white spaces to create more space for contents in small view ports
+        margin-right: 3rem; // since we decreased the padding in the above media query line code we should set it equal to it.
+    }
+    @media only screen and (max-width: $bp-small) { 
+        margin-right: 0; // 14-step , remove the margin right. we set this margin previously because there was an element at the right side of this element. 
+        margin-bottom: 3rem; // adding a margin at the bottom because there wasn't any element underneath of this element before.
+    }
+}
+.user-reviews {
+    flex: 1; // flex grow to 1 to occupy the remaining width
+
+    display: flex;// all the below code to center the button in center
+    flex-direction: column;
+    align-items: center;
+}
